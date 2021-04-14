@@ -42,14 +42,14 @@ btn.addEventListener('click', function (e) {
     }
     else if(titleTxt.value.length === 0 && txt.value.length !== 0)
     {
-        alert('add title');
+        alert('Error!!!  Please Fill Your Title...');
     }
     else if(txt.value.length === 0 && titleTxt.value.length !== 0)
     {
-        alert('add txt');
+        alert('Error!!!  Please Fill Your Note...');
     }
     else{
-        alert('add title and txt');
+        alert('Error!!!  Please Fill Your Title and Note...');
     }
 
 
