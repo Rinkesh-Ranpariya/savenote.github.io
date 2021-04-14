@@ -39,15 +39,9 @@
         color: white;
       }
       
-      @media all and (max-width:360px){
-        footer{
-          margin-top: 90px;
-        }
-      }
-
       @media all and (min-width:361px){
         footer{
-          margin-top: 160px;
+          margin-top: 145px;
         }
       }
 
@@ -79,11 +73,20 @@
             </li>
           </ul>
           <form class="d-flex">
+
+            <input
+              id="searchTitle"
+              class="form-control me-2"
+              type="search"
+              placeholder="Search By Title"
+              aria-label="Search"
+            />
+
             <input
               id="searchTxt"
               class="form-control me-2"
               type="search"
-              placeholder="Search Your Note"
+              placeholder="Search By Note"
               aria-label="Search"
             />
             <!-- <button class="btn btn-outline-success" type="submit">
@@ -100,8 +103,8 @@
       <div class="card">
         <div class="card-body">
 
-          <!-- <h5 class="card-title"><b>Add Your Title...</b></h5>
-          <textarea class="form-control my-4" aria-label="With textarea" id="title" rows="1"></textarea> -->
+          <h5 class="card-title"><b>Add Your Title...</b></h5>
+          <textarea class="form-control my-4" aria-label="With textarea" id="titleTxt" rows="1"></textarea>
 
           <h5 class="card-title"><b>Add Your Note...</b></h5>
           
@@ -112,6 +115,7 @@
         </div>
       </div>
 
+      <br><br>
       <hr />
       <h5><b>Your Notes</b></h5>
       <hr />
@@ -132,6 +136,6 @@
       crossorigin="anonymous"
     ></script>
 
-    <script src="js.js"></script>
+    <script src="js1.js"></script>
   </body>
 </html>
