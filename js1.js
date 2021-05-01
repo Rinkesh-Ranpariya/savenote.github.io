@@ -1,10 +1,9 @@
 
-
 showNote();
-
+// change();
 
 let btn=document.getElementById('btn');
-btn.addEventListener('click', function (e) {
+btn.addEventListener('click', function () {
     let txt=document.getElementById('txt');
     let titleTxt=document.getElementById('titleTxt');
     
@@ -84,13 +83,19 @@ function showNote() {
       html = html + `
 
       <div class="noteTxt my-3 mx-4 card" style="width: 18rem;">
-          <div class="card-body">
+        <div class="card-body">
             <h6 class="card-title">Note ${index+1}</h6>
             <h5 class="card-title">Title : ${titleArray[index]}</h5>
             <p class="card-text">Note : ${element}</p>
             <button class="btn btn-primary" id="${index}" onclick="deleteNote(this.id)" >Delete</button>
-          </div>
+            <div class="my-2">
+                <label class="form-check-label" for="gridCheck1">
+                    Make it important
+                </label>&nbsp
+                <input type="checkbox" name="checkbox" onclick="change()" class="checkBox" aria-label="Checkbox for following text input">
+            </div>
         </div>
+      </div>
 
       `;
     
@@ -183,6 +188,23 @@ searchTitle.addEventListener("input", function () {
             // notes.innerHTML = `<b>Nothing to show!!! Use above "Add Your Note" section to add notes.</b>` ;
         }
     });
-
+    
     
 });
+
+function change() {
+    let check=document.getElementsByClassName('noteTxt');
+    Array.from(check).forEach(function(element) {
+    let check1=element.querySelector("input[name=checkbox]");
+    check1.addEventListener('change',function () {
+        if(this.checked) {
+            element.style.backgroundColor="rgb(190, 245, 175)" ;
+        }
+        else{
+            element.style.backgroundColor= "white" ;
+        }
+    })
+
+});
+
+}
