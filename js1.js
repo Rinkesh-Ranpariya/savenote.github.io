@@ -22,7 +22,7 @@ btn.addEventListener('click', function () {
         titleArray.push(titleTxt.value);
         localStorage.setItem('title',JSON.stringify(titleArray));
         titleTxt.value='';
-
+        
         // for text
         let note=localStorage.getItem('note');
         if(note == null)
@@ -37,22 +37,46 @@ btn.addEventListener('click', function () {
         localStorage.setItem('note',JSON.stringify(noteArray));
         txt.value='';
 
+        alearT('success','Your Note Added Successfully...');
         showNote();
     }
     else if(titleTxt.value.length === 0 && txt.value.length !== 0)
     {
-        alert('Error!!!  Please Fill Your Title...');
+        alearT('danger','Error!!!  Please Fill Your Title...');
+        // alert('Error!!!  Please Fill Your Title...');
     }
     else if(txt.value.length === 0 && titleTxt.value.length !== 0)
     {
-        alert('Error!!!  Please Fill Your Note...');
+        alearT('danger','Error!!!  Please Fill Your Note...');
+        // alert('Error!!!  Please Fill Your Note...');
     }
-    else{
-        alert('Error!!!  Please Fill Your Title and Note...');
+    else
+    {
+        alearT('danger','Error!!!  Please Fill Your Title and Note...');
+        // alert('Error!!!  Please Fill Your Title and Note...');
     }
 
 
 });
+
+function alearT(type,message) {
+    let alert=document.getElementById('alert');
+    let m=':';
+    let html=`
+    <div class="alert alert-${type} alert-dismissible fade show" role="alert">
+    <strong>${type} ${m} </strong>${message}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+    `;
+
+    alert.innerHTML=html;
+
+    setTimeout(() => {
+        alert.innerHTML='';
+    }, 4000);
+}
 
 function showNote() {
 
