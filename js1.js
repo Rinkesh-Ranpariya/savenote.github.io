@@ -1,6 +1,6 @@
 
 showNote();
-// change();
+ccc();
 
 let btn=document.getElementById('btn');
 btn.addEventListener('click', function () {
@@ -116,13 +116,13 @@ function showNote() {
                 <label class="form-check-label" for="gridCheck1">
                     Make it important
                 </label>&nbsp
-                <input type="checkbox" name="checkbox" onclick="change()" class="checkBox" aria-label="Checkbox for following text input">
+                <input type="checkbox" name="checkbox" id="${index}" onclick="change(this.id)" class="checkBox" aria-label="Checkbox for following text input">
             </div>
         </div>
       </div>
 
       `;
-    
+      
     });
 
     let notes=document.getElementById('notes');
@@ -216,19 +216,111 @@ searchTitle.addEventListener("input", function () {
     
 });
 
+
 function change() {
+
+    let tick=localStorage.getItem('tick');
+    if(tick == null)
+    {
+        tickArray={};
+    }
+    else
+    {
+        tickArray=JSON.parse(tick);
+    }
+    
     let check=document.getElementsByClassName('noteTxt');
-    Array.from(check).forEach(function(element) {
+    Array.from(check).forEach(function(element,index) {
     let check1=element.querySelector("input[name=checkbox]");
     check1.addEventListener('change',function () {
         if(this.checked) {
             element.style.backgroundColor="rgb(190, 245, 175)" ;
+
+            tickArray[index]='checked';
+            localStorage.setItem('tick',JSON.stringify(tickArray));
+            
         }
         else{
             element.style.backgroundColor= "white" ;
+
+            tickArray[index]='un-checked';
+            localStorage.setItem('tick',JSON.stringify(tickArray));
+            
         }
-    })
+    });
 
 });
 
 }
+
+
+function ccc() {
+    let tick=localStorage.getItem('tick');
+    if(tick == null)
+    {
+        tickArray={};
+    }
+    else
+    {
+        tickArray=JSON.parse(tick);
+    }
+
+    let checkk=document.getElementsByClassName('noteTxt');
+    Array.from(checkk).forEach(function(element,index) {
+
+        if(tickArray[index]==='checked')
+        {
+            element.style.backgroundColor = "rgb(190, 245, 175)" ;
+            element.querySelector("input[name=checkbox]").checked=true;
+        }
+        else{
+            element.style.backgroundColor = "white" ;
+        }
+
+    });
+
+
+}
+
+// let tick=localStorage.getItem('tick');
+//     if(tick == null)
+//     {
+//         tickArray={};
+//     }
+//     else
+//     {
+//          tickArray=JSON.parse(tick);
+//         // tickArray[index]='checked';
+//     }
+
+//     let checkk=document.getElementsByClassName('noteTxt');
+//     Array.from(checkk).forEach(function(element,index) {
+
+//         if(tickArray[index]==='checked')
+//         {
+//         element.style.backgroundColor = "rgb(190, 245, 175)" ;
+//         }
+//         else{
+//         element.style.backgroundColor = "white" ;
+//         }
+//     }
+
+    
+
+
+// function change(id) {
+//     let check=document.getElementsByClassName('noteTxt');
+//     Array.from(check).forEach(function(element,index) {
+//     let check1=element.querySelector("input[name=checkbox]");
+//     check1.addEventListener('change',function () {
+//         if(this.checked) {
+//             element.style.backgroundColor="rgb(190, 245, 175)" ;
+
+//         }
+//         else{
+//             element.style.backgroundColor= "white" ;
+//         }
+//     })
+
+// });
+// }
